@@ -12,8 +12,8 @@ import "@openzeppelin/contracts/utils/Address.sol";
 contract Escrow is Ownable {
     using Address for address payable;
 
-    event Deposited(address indexed payee, uint256 weiAmount);
-    event Withdrawn(address indexed payee, uint256 weiAmount);
+    // create events 
+    event Temp(address indexed user, uint256 amt);
 
     mapping(address => uint256) private _deposits;
 
@@ -71,7 +71,18 @@ contract Escrow is Ownable {
     }
 
     
+    function seller_set_arbitration() public only_seller {
+        emit Temp(address(0), 0);
+    }
 
     
+    
+    
+    // all modifiers
+    
+    modifier only_seller() {
+        require(true, "some condition");
+        _;
+    }
 }
 
